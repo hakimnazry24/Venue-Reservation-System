@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venue Reservation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="make_reservation.dart.js"></script>
+  </head>
+  <body class="grid grid-cols-6">
+    <!-- header -->
+    <div
+      class="md:lg:col-span-1 shadow-xl shadow-blue-100 rounded-lg xs:sm:w-screen"
+    >
+      <ul class="p-8 text-lg">
+        <h1
+          class="text-xl pb-5 font-bold text-blue-700 cursor-pointer"
+          id="title"
+          onclick="changeContent('home')"
+        >
+          Venue Reservation System
+        </h1>
+
+        <li
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('home')"
+        >
+          Home
+        </li>
+
+        <li
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('user-dashboard')"
+        >
+          User Dashboard
+        </li>
+
+        <li
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('list-venues')"
+        >
+          View Venue
+        </li>
+
+        <li
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('admin-dashboard')"
+        >
+          Admin Dashboard
+        </li>
+
+        <li
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('manage-reservation')"
+        >
+          Manage Reservation
+        </li>
+
+        <li
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('login-page')"
+        >
+          Login Page
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="" class="h-64" />
+        <p id="room-id"></p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
