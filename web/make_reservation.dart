@@ -23,6 +23,8 @@ main() {
 
     var reservation = {
       "name": name,
+      "roomId": roomId,
+      // "reservationTime": reservationTime.
       "reservationDate": reservationDate,
       "reservationDuration": reservationDuration
     };
