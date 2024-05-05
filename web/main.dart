@@ -1,11 +1,74 @@
+import "dart:convert";
 import 'package:web/helpers.dart';
-import "dart:html";
 import "dart:js";
+import "dart:math";
+
+import "package:web/web.dart";
 
 main() {
+  if (window.localStorage.getItem("reservation") == null) {
+    window.localStorage.setItem("reservation", "[]");
+  }
+  print(window.localStorage.getItem("reservation"));
+
   context["changeContent"] = (String page) {
     changeContent(page);
   };
+
+  context["makeReservation"] = makeReservation;
+  context["removeReservation"] = removeReservation;
+  context["updateReservation"] = updateReservation;
+}
+
+void updateReservation() {}
+
+void removeReservation(int reservationId) {
+  List reservations = json.decode(window.localStorage.getItem("reservation")!);
+
+  Map reservationToBeRemoved = {};
+  for (var reservation in reservations) {
+    if (reservation["reservationId"].toString() == reservationId.toString()) {
+      reservationToBeRemoved = reservation;
+      break;
+    }
+  }
+  print(reservationToBeRemoved);
+  reservations.remove(reservationToBeRemoved);
+  // print(reservations);
+  window.localStorage.setItem("reservation", json.encode(reservations));
+  window.alert("Successfully removing Reservation ID: $reservationId");
+
+  window.location.replace("http://localhost:8080/index.html");
+}
+
+void makeReservation() {
+  var rng = Random();
+  FormData formData =
+      FormData(document.querySelector("#reservation-form") as HTMLFormElement);
+
+  var roomId = formData.get("roomId") as String;
+  var name = formData.get("name") as String;
+  var reservationDate = formData.get("reservation-date") as String;
+  var reservationDuration = formData.get("reservation-duration") as String;
+
+  var reservation = {
+    "reservationId": rng.nextInt(1000000),
+    "name": name,
+    "roomId": roomId,
+    // "reservationTime": reservationTime.
+    "reservationDate": reservationDate,
+    "reservationDuration": reservationDuration
+  };
+
+  var currentReservation =
+      json.decode(window.localStorage.getItem("reservation")!);
+  var newReservation = [...currentReservation, reservation];
+
+  window.localStorage.setItem("reservation", jsonEncode(newReservation));
+
+  window.alert("Successfully making a reservation");
+
+  window.location.replace("http://localhost:8080/index.html");
 }
 
 void changeContent(String page) {
@@ -429,11 +492,149 @@ void changeContent(String page) {
 """;
       break;
     case "login-page":
-      contentDiv?.innerHTML = "<h1>login page</h1>";
+      contentDiv?.innerHTML = '''
+        <div class="container">
+        <form id="form" action="/">
+            <h1>Registration</h1>
+            <div class="input-control">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">Password</label>
+                <input id="password"name="password" type="password">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password2">Password again</label>
+                <input id="password2"name="password2" type="password">
+                <div class="error"></div>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+      ''';
       break;
 
     case "admin-dashboard":
-      contentDiv?.innerHTML = "<h1>admin dashboard</h1>";
+      contentDiv?.innerHTML = '''
+  <div class="container">
+        <h1 class="font-semibold text-3xl mb-5">Admin View - Venue Reservation System</h1>
+        
+        <section class="venue-management">
+          <h2 class="font-semibold text-xl mb-5">Venue Management</h2>
+          <div class="venue-actions">
+            <button id="addVenueBtn" class="text-white rounded-lg py-2 px-3 bg-blue-600">Add Venue</button>
+          </div>
+    
+          <table id="venueTable">
+            <thead>
+              <tr>
+                <th>Venue Name</th>
+                <th>Venue Location</th>
+                <th>Quantity</th>
+                <th>Image</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Table rows will be added dynamically -->
+            </tbody>
+          </table>
+        </section>
+        
+        <section class="reservation-management mt-10">
+          <h2 class="font-semibold text-xl mb-5">Reservation Management</h2>
+          <button id="viewReservations" onclick="myFunction()" class="text-white rounded-lg py-2 px-3 bg-blue-600 mb-5">View All Reservations</button>
+        </section>
+        <div class="fixTableHead" id="reservationTable"> 
+          <table> 
+            <thead> 
+              <tr> 
+                <th>Reservation ID</th>
+                <th>Room number</th>
+                <th>Full name</th>
+                <th>Reservation Date</th>
+                <th>Reservation Duration</th> 
+                <th>Option</th> 
+              </tr> 
+            </thead> 
+        
+            <tbody class="reservation-table"> 
+              
+            </tbody> 
+              
+          </table> 
+        </div> 
+    
+     </div>
+
+ ''';
+      var reservations =
+          json.decode(window.localStorage.getItem("reservation")!);
+      int index = 0;
+      for (var reservation in reservations) {
+        // create row
+        var reservationTr = document.createElement("tr");
+        reservationTr.className = "reservation-row-$index";
+
+        // create name, room, date and duration table cell
+        var reservationIdTd = document.createElement("td");
+        var nameTd = document.createElement("td");
+        var roomIdTd = document.createElement("td");
+        var reservationDateTd = document.createElement("td");
+        var reservationDurationTd = document.createElement("td");
+        var optionTd = document.createElement("td");
+
+        // assign value from localStorage to variable
+        var reservationId = reservation["reservationId"].toString();
+        print(reservationId);
+        var name = reservation["name"];
+        var roomId = "Conference room ${reservation['roomId']}";
+        var reservationDate = reservation["reservationDate"];
+        var reservationDuration = "${reservation["reservationDuration"]} hours";
+
+        // assign value to element
+        reservationIdTd.innerHTML = reservationId;
+        nameTd.innerHTML = name;
+        roomIdTd.innerHTML = roomId;
+        reservationDateTd.innerHTML = reservationDate;
+        reservationDurationTd.innerHTML = reservationDuration;
+        optionTd.innerHTML =
+            "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button>";
+
+        // append row to table
+        document
+            .querySelector(".reservation-table")!
+            .appendChild(reservationTr);
+
+        // append cell to row
+        document
+            .querySelector(".reservation-row-$index")!
+            .appendChild(reservationIdTd);
+        document
+            .querySelector(".reservation-row-$index")!
+            .appendChild(roomIdTd);
+        document.querySelector(".reservation-row-$index")!.appendChild(nameTd);
+        document
+            .querySelector(".reservation-row-$index")!
+            .appendChild(reservationDateTd);
+        document
+            .querySelector(".reservation-row-$index")!
+            .appendChild(reservationDurationTd);
+        document
+            .querySelector(".reservation-row-$index")!
+            .appendChild(optionTd);
+
+        index++;
+      }
+
       break;
 
     case "room-1":
@@ -451,11 +652,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+        <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="1"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -504,11 +717,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="2"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -557,11 +782,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="3"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -610,11 +847,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="4"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -663,11 +912,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="5"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -716,11 +977,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="6"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -769,11 +1042,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="7"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -822,11 +1107,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="8"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -875,11 +1172,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="9"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -928,11 +1237,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="10"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -981,11 +1302,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="11"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1034,11 +1367,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="12"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1087,11 +1432,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="13"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1140,11 +1497,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="14"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1193,11 +1562,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="15"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1246,11 +1627,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="16"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1308,6 +1701,17 @@ void changeContent(String page) {
             <input
             required
               type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="17"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
               name="name"
               id="name"
               placeholder="Your name"
@@ -1352,11 +1756,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="18"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1405,11 +1821,23 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="19"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
@@ -1458,11 +1886,22 @@ void changeContent(String page) {
         onsubmit="makeReservation()"
       >
         <div class="flex flex-col gap-4">
+          <p>Room number:</p>
           <p>Full name:</p>
           <p>Booking date:</p>
           <p>Booking duration:</p>
         </div>
         <div>
+          <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="20"
+              readonly
+            />
+          </div>
           <div class="flex flex-col gap-4">
             <input
             required
