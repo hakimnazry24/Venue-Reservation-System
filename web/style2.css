@@ -38,7 +38,7 @@ body {
   }
 
   .fixTableHead { 
-    overflow-y: auto; 
+    overflow-y: visible; 
     height: 110px; 
   } 
   .fixTableHead thead th { 
