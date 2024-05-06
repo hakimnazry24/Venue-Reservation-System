@@ -1,19 +1,33 @@
-A bare-bones Dart web app.
 
-Uses [`package:web`](https://pub.dev/packages/web)
-to interop with JS and the DOM.
+## GROUP NAME : SADGE
 
-## Running and building
-
-To run the app, use these commands:
+Group Member Details:
 ```
-dart pub global activate webdev
-webdev serve
+Abdullah Alwafi bin Mohd Aminudin 2219713
+Hakim Nazry
+Harith
 ```
 
-To build a production version ready for deployment, use these commands:
+Assign Task for each member:
 ```
-webdev build
+Hakim
+1.Leader
+2.Home
+3.User Dashboard
+4.View Venue Page
+
+Wafi
+1.Login Page
+2.Admin View Page (Admin Dashboard)
+
+Harith
+1. Manage Reservation
 ```
 
-For more details, see https://dart.dev/web/get-started
+Brief Description for Case Study
+```
+Our case study is on the Venue Reservation System. Users have 30 venues to choose from from 8 p.m. to 11 p.m.
+The user can book for a minimum 2 hours and a maximum 2 hours for each venue. The user can modify, delete, and view
+his reservation. It is based on a first-come, first-served basis. Lastly, the admin can add, modify, and
+view details of the reservations made by users.
+```
