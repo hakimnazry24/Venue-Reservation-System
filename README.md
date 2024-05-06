@@ -3,9 +3,9 @@
 
 Group Member Details:
 ```
-Abdullah Alwafi bin Mohd Aminudin 2219713
-Hakim Nazry
-Harith
+ABDULLAH ALWAFI BIN MOHD AMINUDIN 2219713
+MUHAMMAD HAKIM BIN MD NAZRI 2110457
+MUHAMMAD HARITH IRFAN BIN MUHAMAD SUHAILI 2211867
 ```
 
 Assign Task for each member:
