@@ -13,7 +13,7 @@ void changeContent(String page) {
 </div>
 """;
       break;
-
+//Harith part
     case "user-dashboard":
       List reservations =
           json.decode(window.localStorage.getItem("reservation")!);
@@ -203,6 +203,7 @@ void changeContent(String page) {
 
 ''';
       break;
+    //Hakim Part
     case "list-venues":
       contentDiv?.innerHTML = """
 
@@ -490,7 +491,7 @@ void changeContent(String page) {
             class="w-full h-64 row-span-4"
           />
           <div class="flex justify-between p-3">
-            <p class="pt-2 text-lg">Conference Room 15/p>
+            <p class="pt-2 text-lg">Conference Room 15</p>
             <form  method="get" onsubmit="changeContent('room-15')">
               <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="15">
                 Book
@@ -594,11 +595,208 @@ void changeContent(String page) {
           </div>
         </div>
         
+         <!-- room card 21-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-21.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 21</p>
+            <form method="get" onsubmit="changeContent('room-21')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 22-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-22.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 22</p>
+            <form method="get" onsubmit="changeContent('room-22')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 23-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-23.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 23</p>
+            <form method="get" onsubmit="changeContent('room-23')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 24-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-24.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 24</p>
+            <form method="get" onsubmit="changeContent('room-24')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 25-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-25.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 25</p>
+            <form method="get" onsubmit="changeContent('room-25')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 26-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-26.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 26</p>
+            <form method="get" onsubmit="changeContent('room-26')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 27-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-27.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 27</p>
+            <form method="get" onsubmit="changeContent('room-27')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 28-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-28.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 28</p>
+            <form method="get" onsubmit="changeContent('room-28')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 29-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-29.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 29</p>
+            <form method="get" onsubmit="changeContent('room-29')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- room card 30-->
+        <div class="border border-slate-200 shadow-md rounded-lg">
+          <img
+            src="/images/rooms/room-30.jpg"
+            width="300"
+            height="300"
+            alt=""
+            class="w-full h-64 row-span-4"
+          />
+          <div class="flex justify-between p-3">
+            <p class="pt-2 text-lg">Conference Room 30</p>
+            <form method="get" onsubmit="changeContent('room-30')">
+              <button name="room_id" class="p-1 px-4 rounded-xl text-white bg-blue-600 active:bg-blue-800" value="20">
+                Book
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+     
+
+         
+
+         
+
+         
     </div>
 """;
       break;
+      //Wafi Part
     case "login-page":
       contentDiv?.innerHTML = '''
         <div class="container">
@@ -690,7 +888,7 @@ void changeContent(String page) {
           reservationDateTd.innerHTML = reservationDate;
           reservationDurationTd.innerHTML = reservationDuration;
           optionTd.innerHTML =
-              "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button>";
+              "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button><button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='editReservation()'>Edit</button>";
 
           // append row to table
 
@@ -729,7 +927,8 @@ void changeContent(String page) {
       }
 
       break;
-
+      
+    //Hakim part
     case "room-1":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
@@ -1992,6 +2191,657 @@ void changeContent(String page) {
               id="roomId"
               class="p-2 rounded-xl border border-slate-300"
               value="20"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+
+      case "room-21":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-21.jpg" class="h-64" />
+        <p id="room-id">Conference room 21</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="21"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-22":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-22.jpg" class="h-64" />
+        <p id="room-id">Conference room 22</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="22"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+
+      case "room-23":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-23.jpg" class="h-64" />
+        <p id="room-id">Conference room 23</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="23"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-24":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-24.jpg" class="h-64" />
+        <p id="room-id">Conference room 24</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="24"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-25":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-25.jpg" class="h-64" />
+        <p id="room-id">Conference room 25</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="25"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-26":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-26.jpg" class="h-64" />
+        <p id="room-id">Conference room 26</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="26"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-27":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-27.jpg" class="h-64" />
+        <p id="room-id">Conference room 27</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="27"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-28":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-28.jpg" class="h-64" />
+        <p id="room-id">Conference room 28</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="28"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-29":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-29.jpg" class="h-64" />
+        <p id="room-id">Conference room 29</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="29"
+              readonly
+            />
+          </div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              class="p-2 rounded-xl border border-slate-300"
+            />
+          </div>
+          <div>
+            <input required type="date" name="reservation-date" id="reservation-date" />
+          </div>
+          <div>
+            <select name="reservation-duration" id="reservation-duration" required>
+              <option value="2">2 hours</option>
+              <option value="3">3 hours</option>
+              <option value="4">4 hours</option>
+            </select>
+            <div>
+              <button
+                type="submit"
+                class="p-2 rounded-xl text-white bg-blue-600 mt-10"
+              >
+                Submit Reservation
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+''';
+      break;
+      case "room-30":
+      contentDiv?.innerHTML = '''
+      <div class="col-span-5 p-10">
+      <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
+      <div class="flex items-center gap-10 text-3xl">
+        <img id="room-image" src="/images/rooms/room-30.jpg" class="h-64" />
+        <p id="room-id">Conference room 30</p>
+      </div>
+      <form
+        class="pt-10 text-lg grid grid-cols-3"
+        method="get"
+        id="reservation-form"
+        onsubmit="makeReservation()"
+      >
+        <div class="flex flex-col gap-4">
+          <p>Room number:</p>
+          <p>Full name:</p>
+          <p>Booking date:</p>
+          <p>Booking duration:</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-4">
+            <input
+            required
+              type="text"
+              name="roomId"
+              id="roomId"
+              class="p-2 rounded-xl border border-slate-300"
+              value="30"
               readonly
             />
           </div>

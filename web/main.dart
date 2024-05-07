@@ -16,6 +16,6 @@ main() {
 
   context["makeReservation"] = makeReservation;
   context["removeReservation"] = removeReservation;
-  context["updateReservation"] = updateReservation;
+  context["editReservation"] = editReservation;
   context["authenticate"] = authenticate;
 }

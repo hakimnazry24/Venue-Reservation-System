@@ -12,8 +12,7 @@ Assign Task for each member:
 ```
 Hakim
 1.Leader
-2.Homevbb
-3.User Dashboard
+2.Home
 4.View Venue Page
 
 Wafi
@@ -22,6 +21,7 @@ Wafi
 
 Harith
 1. Manage Reservation
+2. User Dashboard page
 ```
 
 Brief Description for Case Study
