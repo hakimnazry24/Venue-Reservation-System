@@ -6,8 +6,8 @@
     <title>Venue Reservation System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="main.dart.js"></script>
-    <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="grid md:lg:grid-cols-6">
     <!-- header -->
@@ -15,10 +15,13 @@
       class="md:lg:col-span-1 shadow-xl shadow-blue-100 rounded-lg xs:sm:w-screen"
     >
       <ul class="p-8 text-lg">
-
-          <h1 class="text-xl pb-5 font-bold text-blue-700 cursor-pointer" id="title" onclick="changeContent('home')">
-            Venue Reservation System
-          </h1>
+        <h1
+          class="text-xl pb-5 font-bold text-blue-700 cursor-pointer"
+          id="title"
+          onclick="changeContent('home')"
+        >
+          Venue Reservation System
+        </h1>
 
         <li
           class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
@@ -28,7 +31,8 @@
         </li>
 
         <li
-          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer" onclick="changeContent('user-dashboard')"
+          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
+          onclick="changeContent('user-dashboard')"
         >
           User Dashboard
         </li>
@@ -46,38 +50,27 @@
         >
           Admin Dashboard
         </li>
-
-
-          <li
-            class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer" onclick="changeContent('manage-reservation')"
-          >
-            Manage Reservation
-          </li>
-
-
-        <li
-          class="p-2 transition ease-in-out duration-150 hover:bg-blue-300 rounded-lg cursor-pointer"
-          onclick="changeContent('login-page')"
-        >
-          Login Page
-        </li>
       </ul>
     </div>
     <!-- content -->
     <div id="content" class="col-span-5">
-      <div class="flex flex-col gap-3 justify-center items-center mt-20">
-        <h1 class="text-blue-600 font-semibold text-3xl">
-          Welcome to Venue Reservation System
-        </h1>
-        <p class="text-slate-500">
-          Start reserving your venue by navigating to
-          <span
-            onclick="changeContent('list-venues')"
-            class="underline slate-700 cursor-pointer font-semibold hover:opacity-80"
-            >View Venue</span
-          >
-          tab.
-        </p>
+      <div class="container">
+        <form id="login-form" onsubmit="authenticate()">
+          <h1 class="text-xl font-semibold mb-5">Login</h1>
+          <div class="input-control">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" />
+            <div class="error"></div>
+          </div>
+
+          <div class="input-control">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" />
+            <div class="error"></div>
+          </div>
+
+          <button type="submit">Sign Up</button>
+        </form>
       </div>
     </div>
   </body>

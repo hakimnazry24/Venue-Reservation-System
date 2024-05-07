@@ -15,9 +15,186 @@ void changeContent(String page) {
       break;
 
     case "user-dashboard":
-      contentDiv?.innerHTML = '''
-  <div>user dashboard</div>
-''';
+      List reservations =
+          json.decode(window.localStorage.getItem("reservation")!);
+      var hakimReservations = reservations
+          .where((reservation) => reservation["username"] == "username=hakim");
+      var wafiyReservations = reservations
+          .where((reservation) => reservation["username"] == "username=wafiy");
+
+        print(wafiyReservations);
+        print(hakimReservations);
+      // display wafiy dashboard when username is wafiy
+      if (document.cookie == "username=wafiy") {
+        contentDiv?.innerHTML = '''
+        <div class="m-10">
+        <h1 class="text-2xl font-semibold mb-5"> User Dashboard for Wafiy </h1>
+          <table>
+              <thead>
+              <tr>
+          <th>Reservation ID</th>
+          <th>Room number</th>
+          <th>Full name</th>
+          <th>Reservation date</th>
+          <th>Reservation duration</th>
+          <th>Option</th>
+          </tr>
+              </thead>
+              <tbody id="wafiy-table-body">
+              
+              </tbody>
+          </table>
+        </div>
+        ''';
+        int index = 0;
+        for (var reservation in wafiyReservations) {
+          // create row
+          var reservationTr = document.createElement("tr");
+          reservationTr.className = "reservation-row-$index";
+
+          // create name, room, date and duration table cell
+          var reservationIdTd = document.createElement("td");
+          var nameTd = document.createElement("td");
+          var roomIdTd = document.createElement("td");
+          var reservationDateTd = document.createElement("td");
+          var reservationDurationTd = document.createElement("td");
+          var optionTd = document.createElement("td");
+
+          // assign value from localStorage to variable
+          var reservationId = reservation["reservationId"].toString();
+          var name = reservation["name"];
+          var roomId = "Conference room ${reservation['roomId']}";
+          var reservationDate = reservation["reservationDate"];
+          var reservationDuration =
+              "${reservation["reservationDuration"]} hours";
+
+          // assign value to element
+          reservationIdTd.innerHTML = reservationId;
+          nameTd.innerHTML = name;
+          roomIdTd.innerHTML = roomId;
+          reservationDateTd.innerHTML = reservationDate;
+          reservationDurationTd.innerHTML = reservationDuration;
+          optionTd.innerHTML =
+              "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button>";
+
+          // append row to table
+
+          document
+              .querySelector("#wafiy-table-body")!
+              .appendChild(reservationTr);
+
+          // append cell to row
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationIdTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(roomIdTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(nameTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationDateTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationDurationTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(optionTd);
+
+          index++;
+        }
+      }
+
+      // display hakim dashboard when username equals hakim
+      else if (document.cookie == "username=hakim") {
+        contentDiv?.innerHTML = '''
+        <div class="m-10">
+        <h1 class="text-2xl font-semibold mb-5"> User Dashboard for Hakim </h1>
+          <table>
+              <thead>
+              <tr>
+          <th>Reservation ID</th>
+          <th>Room number</th>
+          <th>Full name</th>
+          <th>Reservation date</th>
+          <th>Reservation duration</th>
+          <th>Option</th>
+          </tr>
+              </thead>
+              <tbody id="hakim-table-body">
+              
+              </tbody>
+          </table>
+        </div>
+        ''';
+        int index = 0;
+        for (var reservation in hakimReservations) {
+          // create row
+          var reservationTr = document.createElement("tr");
+          reservationTr.className = "reservation-row-$index";
+
+          // create name, room, date and duration table cell
+          var reservationIdTd = document.createElement("td");
+          var nameTd = document.createElement("td");
+          var roomIdTd = document.createElement("td");
+          var reservationDateTd = document.createElement("td");
+          var reservationDurationTd = document.createElement("td");
+          var optionTd = document.createElement("td");
+
+          // assign value from localStorage to variable
+          var reservationId = reservation["reservationId"].toString();
+          var name = reservation["name"];
+          var roomId = "Conference room ${reservation['roomId']}";
+          var reservationDate = reservation["reservationDate"];
+          var reservationDuration =
+              "${reservation["reservationDuration"]} hours";
+
+          // assign value to element
+          reservationIdTd.innerHTML = reservationId;
+          nameTd.innerHTML = name;
+          roomIdTd.innerHTML = roomId;
+          reservationDateTd.innerHTML = reservationDate;
+          reservationDurationTd.innerHTML = reservationDuration;
+          optionTd.innerHTML =
+              "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button>";
+
+          // append row to table
+
+          document
+              .querySelector("#hakim-table-body")!
+              .appendChild(reservationTr);
+
+          // append cell to row
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationIdTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(roomIdTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(nameTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationDateTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationDurationTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(optionTd);
+
+          index++;
+        }
+      }
+      // if not wafiy or hakim, cannot see user dashboar
+      else {
+        window.alert("You are not user!");
+        changeContent("home");
+      }
+
       break;
 
     case "manage-reservation":
@@ -432,7 +609,7 @@ void changeContent(String page) {
                 <input id="username" name="username" type="text">
                 <div class="error"></div>
             </div>
-          
+
             <div class="input-control">
                 <label for="password">Password</label>
                 <input id="password" name="password" type="password">
@@ -446,7 +623,8 @@ void changeContent(String page) {
       break;
 
     case "admin-dashboard":
-      contentDiv?.innerHTML = '''
+      if (document.cookie == "username=admin") {
+        contentDiv?.innerHTML = '''
   <div class="container">
         <h1 class="font-semibold text-3xl mb-5">Admin View - Venue Reservation System</h1>
         
@@ -458,6 +636,7 @@ void changeContent(String page) {
           <table> 
             <thead> 
               <tr> 
+                <th>Username</th>
                 <th>Reservation ID</th>
                 <th>Room number</th>
                 <th>Full name</th>
@@ -477,63 +656,76 @@ void changeContent(String page) {
      </div>
 
  ''';
-      var reservations =
-          json.decode(window.localStorage.getItem("reservation")!);
-      int index = 0;
-      for (var reservation in reservations) {
-        // create row
-        var reservationTr = document.createElement("tr");
-        reservationTr.className = "reservation-row-$index";
+        var reservations =
+            json.decode(window.localStorage.getItem("reservation")!);
+        int index = 0;
+        for (var reservation in reservations) {
+          // create row
+          var reservationTr = document.createElement("tr");
+          reservationTr.className = "reservation-row-$index";
 
-        // create name, room, date and duration table cell
-        var reservationIdTd = document.createElement("td");
-        var nameTd = document.createElement("td");
-        var roomIdTd = document.createElement("td");
-        var reservationDateTd = document.createElement("td");
-        var reservationDurationTd = document.createElement("td");
-        var optionTd = document.createElement("td");
+          // create name, room, date and duration table cell
+          var usernameTd = document.createElement("td");
+          var reservationIdTd = document.createElement("td");
+          var nameTd = document.createElement("td");
+          var roomIdTd = document.createElement("td");
+          var reservationDateTd = document.createElement("td");
+          var reservationDurationTd = document.createElement("td");
+          var optionTd = document.createElement("td");
 
-        // assign value from localStorage to variable
-        var reservationId = reservation["reservationId"].toString();
-        print(reservationId);
-        var name = reservation["name"];
-        var roomId = "Conference room ${reservation['roomId']}";
-        var reservationDate = reservation["reservationDate"];
-        var reservationDuration = "${reservation["reservationDuration"]} hours";
+          // assign value from localStorage to variable
+          var username = reservation["username"].toString();
+          var reservationId = reservation["reservationId"].toString();
+          var name = reservation["name"];
+          var roomId = "Conference room ${reservation['roomId']}";
+          var reservationDate = reservation["reservationDate"];
+          var reservationDuration =
+              "${reservation["reservationDuration"]} hours";
 
-        // assign value to element
-        reservationIdTd.innerHTML = reservationId;
-        nameTd.innerHTML = name;
-        roomIdTd.innerHTML = roomId;
-        reservationDateTd.innerHTML = reservationDate;
-        reservationDurationTd.innerHTML = reservationDuration;
-        optionTd.innerHTML =
-            "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button>";
+          // assign value to element
+          usernameTd.innerHTML = username;
+          reservationIdTd.innerHTML = reservationId;
+          nameTd.innerHTML = name;
+          roomIdTd.innerHTML = roomId;
+          reservationDateTd.innerHTML = reservationDate;
+          reservationDurationTd.innerHTML = reservationDuration;
+          optionTd.innerHTML =
+              "<button class='bg-red-500 text-white font-semibold rounded-xl p-2' onclick='removeReservation($reservationId)'>Delete</button>";
 
-        // append row to table
-        document
-            .querySelector(".reservation-table")!
-            .appendChild(reservationTr);
+          // append row to table
 
-        // append cell to row
-        document
-            .querySelector(".reservation-row-$index")!
-            .appendChild(reservationIdTd);
-        document
-            .querySelector(".reservation-row-$index")!
-            .appendChild(roomIdTd);
-        document.querySelector(".reservation-row-$index")!.appendChild(nameTd);
-        document
-            .querySelector(".reservation-row-$index")!
-            .appendChild(reservationDateTd);
-        document
-            .querySelector(".reservation-row-$index")!
-            .appendChild(reservationDurationTd);
-        document
-            .querySelector(".reservation-row-$index")!
-            .appendChild(optionTd);
+          document
+              .querySelector(".reservation-table")!
+              .appendChild(reservationTr);
 
-        index++;
+          // append cell to row
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(usernameTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationIdTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(roomIdTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(nameTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationDateTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(reservationDurationTd);
+          document
+              .querySelector(".reservation-row-$index")!
+              .appendChild(optionTd);
+
+          index++;
+        }
+      } else {
+        window.alert("You are not username admin");
+        changeContent("home");
       }
 
       break;

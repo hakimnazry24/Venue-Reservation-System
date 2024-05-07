@@ -1,6 +1,21 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:web/helpers.dart';
+import 'route.dart';
+
+void editReservation() {
+  // dapatkan value dalam localStoarage
+
+  // daptkan carik reservatrion yang nak diedit
+
+  // edit name, venue, tarikh, duration
+
+  // simpan balik data baru dalam localStoarage
+
+  // alert
+
+  // changeContent("admin-dashboard")
+}
 
 bool authenticate() {
   FormData formData =
@@ -9,8 +24,26 @@ bool authenticate() {
   String username = formData.get("username") as String;
   String password = formData.get("password") as String;
 
+// first user - admin
   if (username == "admin" && password == "admin123") {
-    window.alert("You are authenticated!");
+    window.alert("You are authenticated as admin");
+    document.cookie = "username=admin";
+    changeContent("home");
+    return true;
+  }
+
+// second user = wafiy
+  if (username == "wafiy" && password == "wafiy123") {
+    window.alert("You are authenticated as wafiy!");
+    document.cookie = "username=wafiy";
+    changeContent("home");
+    return true;
+  }
+  // third user = hakim
+  if (username == "hakim" && password == "hakim123") {
+    window.alert("You are authenticated as hakim!");
+    document.cookie = "username=hakim";
+    changeContent("home");
     return true;
   }
   window.alert("Wrong username and password! You are not authenticated!");
@@ -35,7 +68,7 @@ void removeReservation(int reservationId) {
   window.localStorage.setItem("reservation", json.encode(reservations));
   window.alert("Successfully removing Reservation ID: $reservationId");
 
-  window.location.replace("http://localhost:8080/index.html");
+  changeContent("admin-dashboard");
 }
 
 void makeReservation() {
@@ -49,6 +82,7 @@ void makeReservation() {
   var reservationDuration = formData.get("reservation-duration") as String;
 
   var reservation = {
+    "username": document.cookie,
     "reservationId": rng.nextInt(1000000),
     "name": name,
     "roomId": roomId,
@@ -65,5 +99,5 @@ void makeReservation() {
 
   window.alert("Successfully making a reservation");
 
-  window.location.replace("http://localhost:8080/index.html");
+  changeContent("list-venues");
 }
