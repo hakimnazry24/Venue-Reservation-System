@@ -2,6 +2,21 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:web/helpers.dart';
 
+bool authenticate() {
+  FormData formData =
+      FormData(document.querySelector("#login-form") as HTMLFormElement);
+
+  String username = formData.get("username") as String;
+  String password = formData.get("password") as String;
+
+  if (username == "admin" && password == "admin123") {
+    window.alert("You are authenticated!");
+    return true;
+  }
+  window.alert("Wrong username and password! You are not authenticated!");
+  return false;
+}
+
 void updateReservation() {}
 
 void removeReservation(int reservationId) {
