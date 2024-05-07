@@ -12,7 +12,7 @@ Assign Task for each member:
 ```
 Hakim
 1.Leader
-2.Home
+2.Reservation Form Page
 4.View Venue Page
 
 Wafi
