@@ -18,4 +18,5 @@ main() {
   context["removeReservation"] = removeReservation;
   context["editReservation"] = editReservation;
   context["authenticate"] = authenticate;
+  context["logout"] = logout;
 }

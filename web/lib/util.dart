@@ -4,20 +4,24 @@ import 'package:web/helpers.dart';
 import 'route.dart';
 import 'dart:js';
 
+void logout() {
+  document.cookie = "username=; Max-Age=0";
+  changeContent("login-page");
+}
+
 void editReservation() {
   // dapatkan value dalam localStoarage
   var reservations = json.decode(window.localStorage.getItem("reservation")!);
 
   // daptkan carik reservatrion yang nak diedit
 
-
   // edit name, venue, tarikh, duration
   var name1 = context.callMethod('prompt', ['Enter new name:']);
   print(name1);
-  reservations["name"]=name1;
-  
+  reservations["name"] = name1;
+
   // simpan balik data baru dalam localStoarage
- 
+
   // alert
   window.alert("You have edited");
   // changeContent("admin-dashboard")
