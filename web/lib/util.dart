@@ -6,6 +6,7 @@ import 'dart:js';
 
 void logout() {
   document.cookie = "username=; Max-Age=0";
+  window.alert("You have successfully logout");
   changeContent("login-page");
 }
 
