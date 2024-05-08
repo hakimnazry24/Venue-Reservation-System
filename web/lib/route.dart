@@ -22,8 +22,8 @@ void changeContent(String page) {
       var wafiyReservations = reservations
           .where((reservation) => reservation["username"] == "username=wafiy");
 
-        print(wafiyReservations);
-        print(hakimReservations);
+      print(wafiyReservations);
+      print(hakimReservations);
       // display wafiy dashboard when username is wafiy
       if (document.cookie == "username=wafiy") {
         contentDiv?.innerHTML = '''
@@ -796,7 +796,7 @@ void changeContent(String page) {
     </div>
 """;
       break;
-      //Wafi Part
+    //Wafi Part
     case "login-page":
       contentDiv?.innerHTML = '''
         <div class="container">
@@ -815,6 +815,11 @@ void changeContent(String page) {
             </div>
             
             <button type="submit">Sign Up</button>
+        <div>
+          <p class="text-slate-300 font-italic">User 1: admin;admin123</p>
+          <p class="text-slate-300 font-italic">User 2: hakim;hakim123</p>
+          <p class="text-slate-300 font-italic">User 3: wafiy;wafiy123</p>
+        </div>
         </form>
     </div>
       ''';
@@ -927,7 +932,7 @@ void changeContent(String page) {
       }
 
       break;
-      
+
     //Hakim part
     case "room-1":
       contentDiv?.innerHTML = '''
@@ -2228,7 +2233,7 @@ void changeContent(String page) {
 ''';
       break;
 
-      case "room-21":
+    case "room-21":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2292,7 +2297,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-22":
+    case "room-22":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2358,7 +2363,7 @@ void changeContent(String page) {
 ''';
       break;
 
-      case "room-23":
+    case "room-23":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2423,7 +2428,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-24":
+    case "room-24":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2488,7 +2493,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-25":
+    case "room-25":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2553,7 +2558,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-26":
+    case "room-26":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2618,7 +2623,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-27":
+    case "room-27":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2683,7 +2688,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-28":
+    case "room-28":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2748,7 +2753,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-29":
+    case "room-29":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
@@ -2813,7 +2818,7 @@ void changeContent(String page) {
     </div>
 ''';
       break;
-      case "room-30":
+    case "room-30":
       contentDiv?.innerHTML = '''
       <div class="col-span-5 p-10">
       <h1 class="text-3xl pb-3 text-blue-800">Make Reservation</h1>
