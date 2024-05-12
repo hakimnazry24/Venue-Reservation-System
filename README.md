@@ -31,3 +31,13 @@ The user can book for a minimum 2 hours and a maximum 2 hours for each venue. Th
 his reservation. It is based on a first-come, first-served basis. Lastly, the admin can add, modify, and
 view details of the reservations made by users.
 ```
+To use the application in your browser, clone the repository first
+```
+git clone https://github.com/hakimnazry24/Venue-Reservation.System.git
+```
+
+Then, unpack the compressed folder. After that, run the following command 
+```
+webdev serve
+```
+This command will run a Dart web server that helps transribe the Dart code into Javascript that is understandable by browser
